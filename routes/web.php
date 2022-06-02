@@ -16,6 +16,12 @@ use App\Http\Controllers\CategoryVideoController;
 |
 */
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
+
 Route::get('/', [IndexController::class, 'index'])->name('index');
 
 Route::get('/videos/create', [VideoController::class, 'create'])->name('videos.create');

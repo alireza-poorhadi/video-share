@@ -144,11 +144,7 @@ return [
         'thumbnail' => 'تصویر بندانگشتی',
         'category_id' => 'دسته‌بندی',
 
-        'password' => [
-            'current_password' => 'رمز عبور کنونی',
-            'password' => 'رمز عبور',
-            'password_confirmation' => 'تایید رمز عبور'
-        ],
+        
         'is_special_offer' => 'پیشنهاد ویژه',
         "user" => [
 

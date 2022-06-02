@@ -11,5 +11,6 @@ return [
     'category' => 'دسته‌بندی',
     'latest-videos' => 'آخرین ویدئوها',
     'most-watched-videos' => 'پربازدیدترین ویدئوها',
-    'favorite-videos' => 'محبوب‌ترین‌ها'
+    'favorite-videos' => 'محبوب‌ترین‌ها',
+    'add_new_video' => 'اضافه کردن فیلم'
 ];
