@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Video;
+use App\Models\Reply;
 use Illuminate\Database\Seeder;
 
-class VideoSeeder extends Seeder
+class ReplySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +14,6 @@ class VideoSeeder extends Seeder
      */
     public function run()
     {
-        Video::factory()->count(20)->create();
+        Reply::factory()->count(100)->create();
     }
 }

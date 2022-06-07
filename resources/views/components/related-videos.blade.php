@@ -1,5 +1,6 @@
 <div id="related-posts">
-
+    <p>@lang('videos.related_videos')</p>
+    <hr>
     @foreach ($videos as $video)
         @unless($video->id == $videoId)
             <!-- video item -->

@@ -16,5 +16,8 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory(10)->create();
         $this->call(CategorySeeder::class);
         $this->call(VideoSeeder::class);
+        $this->call(CommentSeeder::class);
+        $this->call(ReplySeeder::class);
+        $this->call(LikeSeeder::class);
     }
 }

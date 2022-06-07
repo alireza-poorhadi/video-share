@@ -1633,6 +1633,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 #comments  ul.children{
 	margin-right: 55px;
 }
+#comments ul.children li {
+	border-bottom-style: none;
+}
 #comments .form-control{
 	border-radius: 0px;
 	-webkit-box-shadow:none;

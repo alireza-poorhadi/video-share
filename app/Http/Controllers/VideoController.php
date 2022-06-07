@@ -7,6 +7,7 @@ use App\Http\Requests\VideoUpdateRequest;
 use App\Models\Category;
 use App\Models\Video;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class VideoController extends Controller
 {
@@ -19,6 +20,12 @@ class VideoController extends Controller
 
     public function store(VideoStoreRequest $request)
     {
+        $path = Storage::putFile('', $request->file);
+        
+        $request->merge([
+            'url' => $path
+        ]);
+
         $request->user()->videos()->create($request->all());
 
         return redirect()->route('index')->with('alert', __('messages.success'));
@@ -26,6 +33,7 @@ class VideoController extends Controller
 
     public function show(Request $request, Video $video)
     {
+        $video->load('comments.user', 'comments.replies', 'comments.replies.user');
         return view('videos.show', compact('video'));
     }
 
@@ -38,6 +46,14 @@ class VideoController extends Controller
 
     public function update(VideoUpdateRequest $request, Video $video)
     {
+        if ($request->hasFile('file')) {
+            $path = Storage::putFile('', $request->file);
+        
+            $request->merge([
+                'url' => $path
+            ]);
+        }
+        
         $video->update($request->all());
         
         return redirect()->route('videos.show', $video->slug)->with('alert', __('messages.video-edited'));

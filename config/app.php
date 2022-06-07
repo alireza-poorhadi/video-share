@@ -176,6 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Hekmatinasser\Verta\Laravel\VertaServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class,
     ],
 
     /*

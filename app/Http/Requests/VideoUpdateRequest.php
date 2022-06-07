@@ -10,7 +10,8 @@ class VideoUpdateRequest extends VideoStoreRequest
     public function rules()
     {
         return array_merge(parent::rules(), [
-            'slug' => ['required', Rule::unique('videos')->ignore($this->video)]
+            'slug' => ['required', Rule::unique('videos')->ignore($this->video)],
+            'file' => ['nullable', 'file', 'mimetypes:video/mp4']
         ]);
     }
 }

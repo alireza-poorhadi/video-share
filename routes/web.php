@@ -1,8 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\ReplyController;
 use App\Http\Controllers\VideoController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\DislikeController;
 use App\Http\Controllers\CategoryVideoController;
 
 /*
@@ -31,3 +35,10 @@ Route::get('/videos/{video}/edit', [VideoController::class, 'edit'])->name('vide
 Route::post('/videos/{video}', [VideoController::class, 'update'])->name('videos.update');
 
 Route::get('/categories/{category:slug}/videos', [CategoryVideoController::class, 'index'])->name('categories.videos.index');
+
+Route::post('/video/{video}/comments', [CommentController::class, 'store'])->name('comment.store');
+
+Route::post('/comment/{comment}/replies', [ReplyController::class, 'store'])->name('reply.store');
+
+Route::get('/{likeable_type}/{likeable_id}/like', [LikeController::class, 'store'])->name('likes.store');
+Route::get('/{likeable_type}/{likeable_id}/dislike', [DislikeController::class, 'store'])->name('dislikes.store');
