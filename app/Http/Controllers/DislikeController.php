@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class DislikeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function store(string $likeable_type, $likeable_id)
     {
         # $likeable_id gets the object of the likeable model from route service provider

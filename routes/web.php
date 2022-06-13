@@ -8,6 +8,8 @@ use App\Http\Controllers\VideoController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\DislikeController;
 use App\Http\Controllers\CategoryVideoController;
+use App\Services\FFMpegAdapter;
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,3 +44,8 @@ Route::post('/comment/{comment}/replies', [ReplyController::class, 'store'])->na
 
 Route::get('/{likeable_type}/{likeable_id}/like', [LikeController::class, 'store'])->name('likes.store');
 Route::get('/{likeable_type}/{likeable_id}/dislike', [DislikeController::class, 'store'])->name('dislikes.store');
+
+Route::get('/d', function (){
+    $ff = new FFMpegAdapter('3l988LkVIr7cQyLvdkVnqatkpQGkiNZWiFravYaq.mp4');
+    echo $ff->getDuration();
+});

@@ -28,6 +28,7 @@ class UpdateVideoObserver
     {
         if ($video->wasChanged('url')) {
             Storage::delete($video->getOriginal('url'));
+            Storage::delete($video->getOriginal('thumbnail'));
         }
     }
 

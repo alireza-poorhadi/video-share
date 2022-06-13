@@ -12,7 +12,7 @@ class IndexController extends Controller
     {
         $videos = Video::latest()->with('user', 'category')->take(6)->get();
         $mostWatchedVideos = Video::with('user', 'category')->inRandomOrder()->limit(6)->get();
-        $mostPopularVideos = Video::with('user', 'category')->inRandomOrder()->limit(6)->get();
+        $mostPopularVideos = Video::with('user', 'category')->filter(['sortBy' => 'like'])->take(6)->get();
         $categories = Category::all();
         return view('index', compact('videos', 'mostWatchedVideos', 'mostPopularVideos', 'categories'));
     }

@@ -15,10 +15,6 @@
                             <input type="text" name="name" class="form-control" value="{{ old('name') }}" placeholder="@lang('videos.name')">
                         </div>
                         <div class="col-md-6">
-                            <label>@lang('videos.length')</label>
-                            <input type="text" name="length" class="form-control" value="{{ old('length') }}" placeholder="@lang('videos.length')">
-                        </div>
-                        <div class="col-md-6">
                             <label>@lang('videos.slug')</label>
                             <input type="text" name="slug" class="form-control" value="{{ old('slug') }}" placeholder="@lang('videos.slug')">
                         </div>
@@ -27,14 +23,10 @@
                             <input type="file" name="file" class="form-control" value="{{ old('url') }}" placeholder="@lang('videos.url')">
                         </div>
                         <div class="col-md-6">
-                            <label>@lang('videos.thumbnail')</label>
-                            <input type="text" name="thumbnail" class="form-control" value="{{ old('thumbnail') }}" placeholder="@lang('videos.thumbnail')">
-                        </div>
-                        <div class="col-md-6">
                             <label>@lang('videos.category')</label>
                             <select class="form-control" name="category_id" id="category">
                                 @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
                                 @endforeach
                             </select>
                         </div>

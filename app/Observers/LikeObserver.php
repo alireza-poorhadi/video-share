@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Like;
+use Illuminate\Support\Facades\Cache;
 use App\Notifications\ResourceWasLiked;
 
 class LikeObserver
@@ -17,7 +18,12 @@ class LikeObserver
     {
         $likingName = $like->user->name;
         $likeable = $like->likeable;
-        $likeable->user->notify(new ResourceWasLiked($likeable, $likingName));
+
+        $this->deleteCache($likeable);
+
+        if ($like->vote == 1) {
+            $likeable->user->notify(new ResourceWasLiked($likeable, $likingName));
+        }
     }
 
     /**
@@ -39,7 +45,9 @@ class LikeObserver
      */
     public function deleted(Like $like)
     {
-        //
+        $likeable = $like->likeable;
+
+        $this->deleteCache($likeable);
     }
 
     /**
@@ -62,5 +70,14 @@ class LikeObserver
     public function forceDeleted(Like $like)
     {
         //
+    }
+
+    private function deleteCache($likeable)
+    {
+        $cacheKeyNameForLikes = 'likes_count_for_' . class_basename($likeable) . '_' . $likeable->id;
+        Cache::forget($cacheKeyNameForLikes);
+
+        $cacheKeyNameForDisikes = 'dislikes_count_for_' . class_basename($likeable) . '_' . $likeable->id;
+        Cache::forget($cacheKeyNameForDisikes);
     }
 }

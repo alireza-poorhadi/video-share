@@ -2,15 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Video;
+use App\Models\Category;
+use Illuminate\Http\Request;
+use App\Services\FFMpegAdapter;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\VideoStoreRequest;
 use App\Http\Requests\VideoUpdateRequest;
-use App\Models\Category;
-use App\Models\Video;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use App\Services\VideoCreationAndUpdateService;
 
 class VideoController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Video::class, 'video');
+    }
+
     public function create()
     {
         $categories = Category::all();
@@ -20,13 +27,7 @@ class VideoController extends Controller
 
     public function store(VideoStoreRequest $request)
     {
-        $path = Storage::putFile('', $request->file);
-        
-        $request->merge([
-            'url' => $path
-        ]);
-
-        $request->user()->videos()->create($request->all());
+        (new VideoCreationAndUpdateService)->create($request->user(), $request->all());
 
         return redirect()->route('index')->with('alert', __('messages.success'));
     }
@@ -46,15 +47,7 @@ class VideoController extends Controller
 
     public function update(VideoUpdateRequest $request, Video $video)
     {
-        if ($request->hasFile('file')) {
-            $path = Storage::putFile('', $request->file);
-        
-            $request->merge([
-                'url' => $path
-            ]);
-        }
-        
-        $video->update($request->all());
+        $videoCreation = (new VideoCreationAndUpdateService)->update($video, $request->all());
         
         return redirect()->route('videos.show', $video->slug)->with('alert', __('messages.video-edited'));
     }

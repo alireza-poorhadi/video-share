@@ -21,5 +21,6 @@ return [
     'send_reply' => 'ارسال پاسخ',
     'log_in_to_send_comment' => 'لطفا برای ارسال دیدگاه خود، وارد سایت شوید.',
     'log_in_to_send_reply' => 'لطفا برای ارسال پاسخ خود، وارد سایت شوید.',
-    'related_videos' => 'ویدئوهای مرتبط'
+    'related_videos' => 'ویدئوهای مرتبط',
+    'search' => 'جستجو ...'
 ];
