@@ -40,7 +40,8 @@ class UpdateVideoObserver
      */
     public function deleted(Video $video)
     {
-        //
+        Storage::delete($video->url);
+        Storage::delete($video->thumbnail);
     }
 
     /**

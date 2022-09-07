@@ -11,7 +11,7 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "hekmatinasser/verta": "^1.12",
         "laravel/framework": "^8.65",
-        "laravel/sanctum": "^2.11",
+        "laravel/sanctum": "^2.15",
         "laravel/tinker": "^2.5",
         "php-ffmpeg/php-ffmpeg": "^1.0"
     },

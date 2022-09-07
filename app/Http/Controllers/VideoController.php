@@ -13,11 +13,6 @@ use App\Services\VideoCreationAndUpdateService;
 
 class VideoController extends Controller
 {
-    public function __construct()
-    {
-        $this->authorizeResource(Video::class, 'video');
-    }
-
     public function create()
     {
         $categories = Category::all();
@@ -47,7 +42,7 @@ class VideoController extends Controller
 
     public function update(VideoUpdateRequest $request, Video $video)
     {
-        $videoCreation = (new VideoCreationAndUpdateService)->update($video, $request->all());
+        (new VideoCreationAndUpdateService)->update($video, $request->all());
         
         return redirect()->route('videos.show', $video->slug)->with('alert', __('messages.video-edited'));
     }

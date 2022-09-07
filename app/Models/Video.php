@@ -18,6 +18,10 @@ class Video extends Model
         'name', 'length', 'url' , 'thumbnail', 'description', 'slug', 'category_id'
     ];
 
+    protected $hidden = ['category_id'];
+
+    protected $appends = ['owner_name', 'category_name'];
+
     public function getLengthInHumanAttribute()
     {
         return gmdate('H:i:s', $this->length);

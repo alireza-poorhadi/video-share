@@ -27,5 +27,6 @@
     "You are receiving this email because we received a password reset request for your account." : "این ایمیل به این دلیل برای شما ارسال شده است که درخواستی از طرف حساب شما مبنی بر بازسازی رمز عبور دریافت کرده‌ایم.",
     "Reset Password" : "بازسازی رمز عبور",
     "This password reset link will expire in :count minutes." : "این لینک بازسازی رمز عبور فقط :count دقیقه معتبر خواهد بود.",
-    "If you did not request a password reset, no further action is required." : "اگر شما درخواست بازسازی رمز عبور را ارسال نکرده‌اید، لازم نیست اقدامی انجام دهید."
+    "If you did not request a password reset, no further action is required." : "اگر شما درخواست بازسازی رمز عبور را ارسال نکرده‌اید، لازم نیست اقدامی انجام دهید.",
+    "Please check I am not a robot" : "لطفا تیک من ربات نیستم را بزنید."
 }
