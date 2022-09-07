@@ -38,9 +38,7 @@
                 </div>
                 <div class="chanel-info">
                     <a class="title" href="#">{{ $video->owner_name }}</a>
-                    <span class="subscribers">436,414 اشتراک</span>
                 </div>
-                <a href="#" class="subscribe">اشتراک</a>
             </div>
             <!-- // Chanels Item -->
 

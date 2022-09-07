@@ -71,13 +71,10 @@
                                         src="{{ auth()->user()->gravatar }}" alt="">
                                 </div>
                                 <h2>{{ auth()->user()->name }}</h2>
-                                <h3>25 اشتراک</h3>
                                 <i class="fa fa-angle-down"></i>
                             </a>
                             <ul class="dropdown-menu account-menu">
-                                <li><a href="#"><i class="fa fa-edit color-1"></i>ویرایش پروفایل</a></li>
                                 <li><a href="{{ route('videos.create') }}"><i class="fa fa-video-camera color-2"></i>@lang('videos.add_new_video')</a></li>
-                                <li><a href="#"><i class="fa fa-star color-3"></i>برگزیده</a></li>
                                 <li><a href="{{ route('logout') }}"><i class="fa fa-sign-out color-4"></i>@lang('Log out')</a></li>
                             </ul>
                         </div>
